@@ -1,13 +1,11 @@
-# Starter Repository for AWS Elastic Beanstalk with Node
+# AWS Elastic Beanstalk with Node and SSL
 
 A quick start for creating a web app on AWS with the following characteristics:
 
 - Ideally suited for low-traffic side projects
 - Quickly and painlessly deploy apps with https
-- Dirt cheap to start. Easy to scale up as needed.
-- Low cost ($5/month)
-- HTTPS
-- Auto-renew certificate from Let's Encrypt
+- Dirt cheap to start ($5/month). Easy to scale up as needed.
+- Free, auto-renewing SSL certificate with Let's Encrypt
 - Provisions automatically from a brand new Elastic Beanstalk environment, so you can quickly be up and running again if the environment is rebuilt or terminated.
 
 # Doesn't AWS already offer this?
