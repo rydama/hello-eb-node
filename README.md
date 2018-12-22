@@ -108,11 +108,6 @@ This setup is resilient to both. You can test by:
 - After the environment comes back, it should be green and the application work be working as before
 - You can choose `Save Configuration` to persist this working state, and build a new environment from it anytime (for example, if your env is terminated/lost for some reason)
 
-## Advanced
-
-- Configure nginx to ignore hack urls
-  - https://forums.aws.amazon.com/thread.jspa?threadID=228527
-
 ## Logging
 
 If you have trouble getting things to work, run `eb ssh` and view the following log files:
