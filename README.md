@@ -118,7 +118,7 @@ If you have trouble getting things to work, run `eb ssh` and view the following 
 
 # What about DB/storage?
 
-Databases can be expensive. For a side project, I don't want to spend $15/month for an RDS instance. Some options are:
+Databases can be expensive. For a side project, it can be a bit much to spend $15/month for an RDS instance. Some options are:
 
 - Use json files stored in S3
 - Free mongodb sandbox at Mongolab https://mlab.com
