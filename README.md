@@ -12,12 +12,12 @@ This repository and README are the result of many hours of troubleshooting on AW
 
 Why was it so difficult? AWS does seem to offer easier ways to get https, but it is expensive or has other problems:
 
-- AWS has a certificate manager that can auto-renew, but only if your SSL is terminated on their elastic load balancer (additional $18/month), or a few other unworkable options, like...
+- AWS has a certificate manager that can auto-renew, but only if your SSL is terminated on their Elastic Load Balancer (additional $18/month), or a few other unworkable options, like...
 - API gateway and lambda could work, but there is a cold-start penalty (5 seconds or so in my experience) that is a non-starter for my applications
 
 # Getting started
 
-- These steps assume familiarity with basic use of the linux shell/mac terminal
+These steps assume familiarity with basic use of the linux shell/mac terminal.
 
 ## Creating an Elastic Beanstalk application/environment
 
@@ -43,7 +43,7 @@ Why was it so difficult? AWS does seem to offer easier ways to get https, but it
 ## Verify your DNS is setup and working
 
 - If you're using Route 53, see https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-beanstalk-environment.html
-- Confirm you can reach the sample application in the browser via your domain name 
+- Regardless of your DNS setup, before proceeding, confirm you can reach the sample application in the browser via your domain name
 
 ## Configure nginx and https with auto-updating Let's Encrypt certs
 
@@ -54,7 +54,7 @@ Why was it so difficult? AWS does seem to offer easier ways to get https, but it
 - Install the Elastic Beanstalk command line tools
   - https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
 - Run `eb init`
-  - Select the application you created earlier
+  - At the prompts, select your region and the application you created earlier
 - Confirm ssh is working
   - Run `eb ssh`
   - Type `yes` to the ssh authenticity warning
@@ -98,6 +98,15 @@ Why was it so difficult? AWS does seem to offer easier ways to get https, but it
 - Visit your domain in the browser to test
 - Let's Encrypt certs expire in 90 days, so `999-04-certbot-cron.config` installs a cron script to automatically attempt to renew your certificate once per week, so you will always have a valid cert. The cert won't actually get renewed until you are within 30 days of expiration.
 
+## Elastic Beanstalk app server restarts and environment rebuilds
+
+This setup is resilient to both. You can test by:
+
+- Visit your application/env in Elastic Beanstalk in the AWS console
+- On the right side, click the Actions drop-down
+- Choose `Restart App Server(s)` or `Rebuild Environment`
+- After the environment comes back, it should be green and the application work be working as before
+- You can choose `Save Configuration` to persist this working state, and build a new environment from it anytime (for example, if your env is terminated/lost for some reason)
 
 ## Advanced
 
